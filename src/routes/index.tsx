@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Trophy, HeartHandshake, ArrowRight, Globe2, Target, Rocket } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -13,19 +14,18 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const categories = [
-  { icon: BookOpen, title: "Summer Courses", desc: "Programming, English, AI, soft skills — taught by the best.", tint: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]" },
-  { icon: Trophy, title: "Competitions & Olympiads", desc: "Hackathons, math & informatics olympiads, global contests.", tint: "bg-[oklch(0.95_0.06_70)] text-[oklch(0.4_0.12_60)]" },
-  { icon: HeartHandshake, title: "Volunteering & Charities", desc: "Make social impact at home and around the world.", tint: "bg-[oklch(0.94_0.05_350)] text-[oklch(0.38_0.12_350)]" },
-];
-
-const stats = [
-  { icon: Globe2, label: "Global & local programs" },
-  { icon: Target, label: "Curated for DZ students" },
-  { icon: Rocket, label: "Built for top universities" },
-];
-
 function Index() {
+  const { t } = useI18n();
+  const categories = [
+    { icon: BookOpen, title: t("home.cat.courses.title"), desc: t("home.cat.courses.desc"), tint: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]" },
+    { icon: Trophy, title: t("home.cat.comp.title"), desc: t("home.cat.comp.desc"), tint: "bg-[oklch(0.95_0.06_70)] text-[oklch(0.4_0.12_60)]" },
+    { icon: HeartHandshake, title: t("home.cat.vol.title"), desc: t("home.cat.vol.desc"), tint: "bg-[oklch(0.94_0.05_350)] text-[oklch(0.38_0.12_350)]" },
+  ];
+  const stats = [
+    { icon: Globe2, label: t("home.stat.global") },
+    { icon: Target, label: t("home.stat.curated") },
+    { icon: Rocket, label: t("home.stat.built") },
+  ];
   return (
     <>
       {/* Hero */}
@@ -40,28 +40,28 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 pt-20 pb-24 md:pt-28 md:pb-32">
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground soft-shadow">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Made in Algeria · for Algerian students
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {t("home.badge")}
             </span>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-              Build the portfolio that gets you into{" "}
-              <span className="brand-gradient-text">world-class universities</span>.
+              {t("home.title.a")}
+              <span className="brand-gradient-text">{t("home.title.b")}</span>
+              {t("home.title.c")}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              LevelUp DZ gathers the courses, competitions and volunteering opportunities
-              that turn smart Algerian students into international candidates.
+              {t("home.subtitle")}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/directory"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:scale-[1.02] hover:opacity-95"
               >
-                Browse opportunities <ArrowRight className="h-4 w-4" />
+                {t("home.cta.browse")} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
               <Link
                 to="/about"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-secondary"
               >
-                Our mission
+                {t("home.cta.mission")}
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
@@ -91,7 +91,7 @@ function Index() {
               <h3 className="mt-5 text-lg font-semibold tracking-tight">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
               <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                Explore <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {t("home.explore")} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
               </span>
             </Link>
           ))}
