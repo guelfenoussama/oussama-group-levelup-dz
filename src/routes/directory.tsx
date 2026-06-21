@@ -20,7 +20,7 @@ export const Route = createFileRoute("/directory")({
 });
 
 function Directory() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const CATEGORIES = [
     { id: "all", label: t("dir.cat.all") },
     { id: "courses", label: t("dir.cat.courses") },
