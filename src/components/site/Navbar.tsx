@@ -1,18 +1,20 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Sparkles, Menu, X } from "lucide-react";
+import { Sparkles, Menu, X, Languages } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/directory", label: "Directory" },
-  { to: "/about", label: "About" },
-  { to: "/admin", label: "Admin" },
+  { to: "/", key: "nav.home" },
+  { to: "/directory", key: "nav.directory" },
+  { to: "/about", key: "nav.about" },
+  { to: "/admin", key: "nav.admin" },
 ] as const;
 
 export function Navbar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
+  const { t, toggle, lang } = useI18n();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -39,24 +41,44 @@ export function Navbar() {
                     : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
                 )}
               >
-                {l.label}
+                {t(l.key)}
               </Link>
             );
           })}
         </nav>
-        <Link
-          to="/directory"
-          className="hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 md:inline-flex"
-        >
-          Explore
-        </Link>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="rounded-lg p-2 text-foreground md:hidden"
-          aria-label="Menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="hidden items-center gap-2 md:flex">
+          <button
+            onClick={toggle}
+            aria-label="Toggle language"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-2 text-xs font-semibold text-foreground transition-all hover:border-primary hover:bg-secondary"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            <span className={lang === "ar" ? "font-sans" : ""}>{t("lang.toggle")}</span>
+          </button>
+          <Link
+            to="/directory"
+            className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:opacity-90"
+          >
+            {t("nav.explore")}
+          </Link>
+        </div>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggle}
+            aria-label="Toggle language"
+            className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2.5 py-1.5 text-xs font-semibold text-foreground"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            {t("lang.toggle")}
+          </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="rounded-lg p-2 text-foreground"
+            aria-label={t("nav.menu")}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border/60 bg-background md:hidden">
@@ -68,7 +90,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-3 text-sm font-medium text-foreground hover:bg-secondary"
               >
-                {l.label}
+                {t(l.key)}
               </Link>
             ))}
           </nav>
