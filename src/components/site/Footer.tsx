@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
 export function Footer() {
+  const { t } = useI18n();
   const [vote, setVote] = useState<boolean | null>(null);
   const [suggestion, setSuggestion] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -18,11 +20,11 @@ export function Footer() {
     const { error } = await supabase.from("feedback").insert({ is_useful: useful, suggestion: suggestion.trim() || null });
     setBusy(false);
     if (error) {
-      toast.error("Couldn't send feedback. Try again.");
+      toast.error(t("fb.toast.err"));
       return;
     }
     setSubmitted(true);
-    toast.success("Thanks for the feedback!");
+    toast.success(t("fb.toast.ok"));
   }
 
   return (
@@ -39,11 +41,10 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              A directory of courses, competitions and volunteering built for Algerian
-              students who dream of joining the world's best universities.
+              {t("footer.tagline")}
             </p>
             <p className="mt-8 text-xs text-muted-foreground">
-              © {new Date().getFullYear()} LevelUp DZ — Built with care for طلاب الجزائر.
+              © {new Date().getFullYear()} LevelUp DZ — {t("footer.copyright")}
             </p>
           </div>
 
@@ -53,15 +54,13 @@ export function Footer() {
                 <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-accent-foreground">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="mt-3 text-base font-semibold">You're the best ✨</h3>
-                <p className="mt-1 text-sm text-muted-foreground">Your feedback helps us improve.</p>
+                <h3 className="mt-3 text-base font-semibold">{t("fb.thanks.title")}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{t("fb.thanks.desc")}</p>
               </div>
             ) : (
               <>
-                <h3 className="text-base font-semibold">Did you find this useful?</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Tell us in one line what we should add next.
-                </p>
+                <h3 className="text-base font-semibold">{t("fb.q")}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{t("fb.hint")}</p>
                 <div className="mt-4 flex gap-2">
                   <button
                     onClick={() => submit(true)}
@@ -71,7 +70,7 @@ export function Footer() {
                       vote === true && "border-primary bg-accent text-accent-foreground",
                     )}
                   >
-                    <ThumbsUp className="h-4 w-4" /> Yes
+                    <ThumbsUp className="h-4 w-4" /> {t("fb.yes")}
                   </button>
                   <button
                     onClick={() => submit(false)}
@@ -81,14 +80,14 @@ export function Footer() {
                       vote === false && "border-destructive bg-destructive/10",
                     )}
                   >
-                    <ThumbsDown className="h-4 w-4" /> Not yet
+                    <ThumbsDown className="h-4 w-4" /> {t("fb.no")}
                   </button>
                 </div>
                 <div className="mt-3 flex gap-2">
                   <Textarea
                     value={suggestion}
                     onChange={(e) => setSuggestion(e.target.value)}
-                    placeholder="Optional: a quick suggestion…"
+                    placeholder={t("fb.placeholder")}
                     className="min-h-[44px] resize-none"
                     maxLength={500}
                   />
