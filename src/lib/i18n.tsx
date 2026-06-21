@@ -203,9 +203,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     <I18nContext.Provider
       value={{ lang, dir: lang === "ar" ? "rtl" : "ltr", t, setLang, toggle }}
     >
-      <div className="contents transition-opacity duration-300" key={lang}>
-        {children}
-      </div>
+      {children}
     </I18nContext.Provider>
   );
 }
