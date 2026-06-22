@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, Trophy, HeartHandshake, ArrowRight, Globe2, Target, Rocket } from "lucide-react";
+import { Code2, Languages as LanguagesIcon, Sparkles, ArrowRight, Globe2, Target, Rocket } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LevelUp DZ — Opportunities for Algerian Students" },
-      { name: "description", content: "Find summer courses, competitions and volunteering to build a world-class university portfolio from Algeria." },
+      { title: "LevelUp DZ — Real Skills for Algerian Students" },
+      { name: "description", content: "Courses in programming, languages and modern skills to help Algerian students build a strong foundation and stand out internationally." },
       { property: "og:title", content: "LevelUp DZ" },
-      { property: "og:description", content: "Find summer courses, competitions and volunteering to build a world-class university portfolio from Algeria." },
+      { property: "og:description", content: "Courses in programming, languages and modern skills to help Algerian students build a strong foundation and stand out internationally." },
     ],
   }),
   component: Index,
@@ -17,9 +17,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { t } = useI18n();
   const categories = [
-    { icon: BookOpen, title: t("home.cat.courses.title"), desc: t("home.cat.courses.desc"), tint: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]" },
-    { icon: Trophy, title: t("home.cat.comp.title"), desc: t("home.cat.comp.desc"), tint: "bg-[oklch(0.95_0.06_70)] text-[oklch(0.4_0.12_60)]" },
-    { icon: HeartHandshake, title: t("home.cat.vol.title"), desc: t("home.cat.vol.desc"), tint: "bg-[oklch(0.94_0.05_350)] text-[oklch(0.38_0.12_350)]" },
+    { icon: Code2, title: t("home.cat.coding.title"), desc: t("home.cat.coding.desc"), tint: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]" },
+    { icon: LanguagesIcon, title: t("home.cat.lang.title"), desc: t("home.cat.lang.desc"), tint: "bg-[oklch(0.95_0.06_70)] text-[oklch(0.4_0.12_60)]" },
+    { icon: Sparkles, title: t("home.cat.ai.title"), desc: t("home.cat.ai.desc"), tint: "bg-[oklch(0.94_0.05_350)] text-[oklch(0.38_0.12_350)]" },
   ];
   const stats = [
     { icon: Globe2, label: t("home.stat.global") },
