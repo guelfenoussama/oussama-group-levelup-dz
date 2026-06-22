@@ -83,6 +83,21 @@ export type Database = {
         }
         Relationships: []
       }
+      site_visits: {
+        Row: {
+          created_at: string
+          visitor_id: string
+        }
+        Insert: {
+          created_at?: string
+          visitor_id: string
+        }
+        Update: {
+          created_at?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -109,6 +124,8 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_total_users: { Args: never; Returns: number }
+      get_total_visitors: { Args: never; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
