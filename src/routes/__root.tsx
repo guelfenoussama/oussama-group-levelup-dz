@@ -129,6 +129,21 @@ function RootComponent() {
     return () => sub.subscription.unsubscribe();
   }, [router, queryClient]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const KEY = "levelup_visitor_id";
+      let vid = localStorage.getItem(KEY);
+      if (!vid) {
+        vid = (crypto.randomUUID?.() ?? `v_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`);
+        localStorage.setItem(KEY, vid);
+        supabase.from("site_visits").insert({ visitor_id: vid }).then(() => {});
+      }
+    } catch {
+      // ignore tracking errors
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
