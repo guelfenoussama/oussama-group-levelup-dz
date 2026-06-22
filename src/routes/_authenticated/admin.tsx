@@ -263,3 +263,30 @@ function Field({ label, children, required, className }: { label: string; childr
     </div>
   );
 }
+
+function StatCard({
+  label,
+  value,
+  hint,
+  icon,
+}: {
+  label: string;
+  value: number | undefined;
+  hint: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 soft-shadow">
+      <div className="flex items-center justify-between">
+        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
+        <div className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-accent-foreground">
+          {icon}
+        </div>
+      </div>
+      <p className="mt-4 text-4xl font-semibold tracking-tight tabular-nums">
+        {value === undefined ? "—" : value.toLocaleString()}
+      </p>
+      <p className="mt-1 text-xs text-muted-foreground">{hint}</p>
+    </div>
+  );
+}
