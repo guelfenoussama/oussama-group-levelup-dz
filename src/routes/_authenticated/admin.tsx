@@ -160,15 +160,12 @@ function Admin() {
           <Field label="Organizer" required>
             <Input value={form.organizer} onChange={(e) => setForm({ ...form, organizer: e.target.value })} required />
           </Field>
-          <Field label="Category" required>
-            <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v as any })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="courses">📚 Courses</SelectItem>
-                <SelectItem value="competitions">🏆 Competitions</SelectItem>
-                <SelectItem value="volunteering">🤝 Volunteering</SelectItem>
-              </SelectContent>
-            </Select>
+          <Field label="Topic (tag)">
+            <Input
+              placeholder="e.g. Programming, English, AI, Soft Skills"
+              value={form.tag ?? ""}
+              onChange={(e) => setForm({ ...form, tag: e.target.value })}
+            />
           </Field>
           <Field label="Format" required>
             <Select value={form.format ?? "online"} onValueChange={(v) => setForm({ ...form, format: v as any })}>
@@ -179,9 +176,6 @@ function Admin() {
                 <SelectItem value="hybrid">Hybrid</SelectItem>
               </SelectContent>
             </Select>
-          </Field>
-          <Field label="Tag">
-            <Input value={form.tag ?? ""} onChange={(e) => setForm({ ...form, tag: e.target.value })} placeholder="e.g. Programming" />
           </Field>
           <Field label="Deadline">
             <Input type="date" value={form.deadline ?? ""} onChange={(e) => setForm({ ...form, deadline: e.target.value || null })} />
@@ -212,7 +206,7 @@ function Admin() {
             <div key={o.id} className="flex flex-wrap items-center gap-3 p-4">
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium">{o.title}</p>
-                <p className="truncate text-xs text-muted-foreground">{o.organizer} · {o.category} · {o.format}</p>
+                <p className="truncate text-xs text-muted-foreground">{o.organizer} · {o.format}{o.tag ? ` · ${o.tag}` : ""}</p>
               </div>
               <Button size="sm" variant="ghost" onClick={() => startEdit(o)}>
                 <Pencil className="h-4 w-4" />
