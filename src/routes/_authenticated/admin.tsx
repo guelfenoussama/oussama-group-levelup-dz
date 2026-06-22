@@ -177,9 +177,6 @@ function Admin() {
               </SelectContent>
             </Select>
           </Field>
-          <Field label="Tag">
-            <Input value={form.tag ?? ""} onChange={(e) => setForm({ ...form, tag: e.target.value })} placeholder="e.g. Programming" />
-          </Field>
           <Field label="Deadline">
             <Input type="date" value={form.deadline ?? ""} onChange={(e) => setForm({ ...form, deadline: e.target.value || null })} />
           </Field>
@@ -209,7 +206,7 @@ function Admin() {
             <div key={o.id} className="flex flex-wrap items-center gap-3 p-4">
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium">{o.title}</p>
-                <p className="truncate text-xs text-muted-foreground">{o.organizer} · {o.category} · {o.format}</p>
+                <p className="truncate text-xs text-muted-foreground">{o.organizer} · {o.format}{o.tag ? ` · ${o.tag}` : ""}</p>
               </div>
               <Button size="sm" variant="ghost" onClick={() => startEdit(o)}>
                 <Pencil className="h-4 w-4" />
