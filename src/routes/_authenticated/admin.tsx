@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Pencil, Trash2, Plus, LogOut, ShieldAlert } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, ShieldAlert, Users, Eye } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 
 type Opp = Database["public"]["Tables"]["opportunities"]["Row"];
@@ -58,6 +58,21 @@ function Admin() {
       const { data, error } = await supabase.from("opportunities").select("*").order("created_at", { ascending: false });
       if (error) throw error;
       return data;
+    },
+  });
+
+  const { data: stats } = useQuery({
+    queryKey: ["admin", "stats"],
+    enabled: isAdmin === true,
+    queryFn: async () => {
+      const [u, v] = await Promise.all([
+        supabase.rpc("get_total_users"),
+        supabase.rpc("get_total_visitors"),
+      ]);
+      return {
+        users: Number(u.data ?? 0),
+        visitors: Number(v.data ?? 0),
+      };
     },
   });
 
@@ -149,6 +164,21 @@ function Admin() {
             <LogOut className="mr-2 h-4 w-4" /> Sign out
           </Button>
         </div>
+      </div>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <StatCard
+          label="Total users"
+          value={stats?.users}
+          hint="Registered accounts"
+          icon={<Users className="h-5 w-5" />}
+        />
+        <StatCard
+          label="Total visitors"
+          value={stats?.visitors}
+          hint="Unique website visits"
+          icon={<Eye className="h-5 w-5" />}
+        />
       </div>
 
       <form onSubmit={save} className="mt-8 rounded-2xl border border-border bg-card p-6 soft-shadow">
