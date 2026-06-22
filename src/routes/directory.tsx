@@ -10,22 +10,30 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/directory")({
   head: () => ({
     meta: [
-      { title: "Opportunities Directory — LevelUp DZ" },
-      { name: "description", content: "Search and filter summer courses, competitions and volunteering for Algerian students." },
-      { property: "og:title", content: "Opportunities Directory — LevelUp DZ" },
-      { property: "og:description", content: "Search and filter summer courses, competitions and volunteering for Algerian students." },
+      { title: "Courses Directory — LevelUp DZ" },
+      { name: "description", content: "Search and filter courses in programming, languages, AI and soft skills for Algerian students." },
+      { property: "og:title", content: "Courses Directory — LevelUp DZ" },
+      { property: "og:description", content: "Search and filter courses in programming, languages, AI and soft skills for Algerian students." },
     ],
   }),
   component: Directory,
 });
 
+const TOPIC_KEYWORDS: Record<string, string[]> = {
+  coding: ["program", "programming", "code", "coding", "web", "software", "dev", "developer", "tech", "data", "python", "javascript", "react", "computer", "برمج", "تطوير", "تقني", "ويب", "بيانات"],
+  languages: ["english", "french", "language", "languages", "ielts", "toefl", "spanish", "arabic", "إنجليز", "فرنس", "لغة", "لغات", "إسبان"],
+  ai: ["ai", "artificial intelligence", "machine learning", "ml", "deep learning", "neural", "ذكاء", "تعلم آلي"],
+  soft: ["soft", "leadership", "communication", "public speaking", "presentation", "productivity", "مهارات ناعمة", "قيادة", "تواصل", "خطابة"],
+};
+
 function Directory() {
   const { t } = useI18n();
-  const CATEGORIES = [
-    { id: "all", label: t("dir.cat.all") },
-    { id: "courses", label: t("dir.cat.courses") },
-    { id: "competitions", label: t("dir.cat.competitions") },
-    { id: "volunteering", label: t("dir.cat.volunteering") },
+  const TOPICS = [
+    { id: "all", label: t("dir.topic.all") },
+    { id: "coding", label: t("dir.topic.coding") },
+    { id: "languages", label: t("dir.topic.languages") },
+    { id: "ai", label: t("dir.topic.ai") },
+    { id: "soft", label: t("dir.topic.soft") },
   ];
   const FORMATS = [
     { id: "all", label: t("dir.fmt.all") },
@@ -34,7 +42,7 @@ function Directory() {
     { id: "hybrid", label: t("dir.fmt.hybrid") },
   ];
   const [q, setQ] = useState("");
-  const [category, setCategory] = useState<string>("all");
+  const [topic, setTopic] = useState<string>("all");
   const [format, setFormat] = useState<string>("all");
   const [open, setOpen] = useState(false);
 
@@ -44,6 +52,7 @@ function Directory() {
       const { data, error } = await supabase
         .from("opportunities")
         .select("*")
+        .eq("category", "courses")
         .order("created_at", { ascending: false });
       if (error) throw error;
       return data;
@@ -54,8 +63,12 @@ function Directory() {
     const items = data ?? [];
     const needle = q.trim().toLowerCase();
     return items.filter((o) => {
-      if (category !== "all" && o.category !== category) return false;
       if (format !== "all" && o.format !== format) return false;
+      if (topic !== "all") {
+        const kws = TOPIC_KEYWORDS[topic] ?? [];
+        const hay = `${o.title} ${o.description} ${o.tag ?? ""} ${o.organizer}`.toLowerCase();
+        if (!kws.some((k) => hay.includes(k))) return false;
+      }
       if (!needle) return true;
       return (
         o.title.toLowerCase().includes(needle) ||
@@ -64,7 +77,7 @@ function Directory() {
         o.description.toLowerCase().includes(needle)
       );
     });
-  }, [data, q, category, format]);
+  }, [data, q, topic, format]);
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-12 md:py-16">
@@ -94,10 +107,10 @@ function Directory() {
       <div className="mt-8 grid gap-8 md:grid-cols-[260px_1fr]">
         <aside className={cn("space-y-6 md:block", open ? "block" : "hidden")}>
           <FilterGroup
-            title={t("dir.category")}
-            options={CATEGORIES}
-            value={category}
-            onChange={setCategory}
+            title={t("dir.topic")}
+            options={TOPICS}
+            value={topic}
+            onChange={setTopic}
           />
           <FilterGroup
             title={t("dir.format")}
