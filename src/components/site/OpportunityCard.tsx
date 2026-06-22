@@ -5,10 +5,9 @@ import { useI18n } from "@/lib/i18n";
 
 type Opp = Database["public"]["Tables"]["opportunities"]["Row"];
 
-const categoryStyles: Record<string, { tKey: string; className: string }> = {
-  courses: { tKey: "card.cat.courses", className: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]" },
-  competitions: { tKey: "card.cat.competitions", className: "bg-[oklch(0.95_0.06_70)] text-[oklch(0.4_0.12_60)]" },
-  volunteering: { tKey: "card.cat.volunteering", className: "bg-[oklch(0.94_0.05_350)] text-[oklch(0.38_0.12_350)]" },
+const courseBadge = {
+  tKey: "card.cat.courses",
+  className: "bg-[oklch(0.94_0.05_185)] text-[oklch(0.32_0.08_195)]",
 };
 
 function FormatIcon({ format }: { format: string }) {
@@ -19,7 +18,7 @@ function FormatIcon({ format }: { format: string }) {
 
 export function OpportunityCard({ opp, index = 0 }: { opp: Opp; index?: number }) {
   const { t, lang } = useI18n();
-  const cat = categoryStyles[opp.category] ?? categoryStyles.courses;
+  const cat = courseBadge;
   return (
     <article
       className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 soft-shadow card-lift animate-fade-up"
