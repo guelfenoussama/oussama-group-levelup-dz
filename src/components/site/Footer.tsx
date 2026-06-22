@@ -104,6 +104,12 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      <div className="border-t border-border/50 py-6 text-center">
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+          Brought to you by Oussama Group
+        </p>
+      </div>
     </footer>
   );
 }
