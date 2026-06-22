@@ -160,15 +160,12 @@ function Admin() {
           <Field label="Organizer" required>
             <Input value={form.organizer} onChange={(e) => setForm({ ...form, organizer: e.target.value })} required />
           </Field>
-          <Field label="Category" required>
-            <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v as any })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="courses">📚 Courses</SelectItem>
-                <SelectItem value="competitions">🏆 Competitions</SelectItem>
-                <SelectItem value="volunteering">🤝 Volunteering</SelectItem>
-              </SelectContent>
-            </Select>
+          <Field label="Topic (tag)">
+            <Input
+              placeholder="e.g. Programming, English, AI, Soft Skills"
+              value={form.tag ?? ""}
+              onChange={(e) => setForm({ ...form, tag: e.target.value })}
+            />
           </Field>
           <Field label="Format" required>
             <Select value={form.format ?? "online"} onValueChange={(v) => setForm({ ...form, format: v as any })}>
