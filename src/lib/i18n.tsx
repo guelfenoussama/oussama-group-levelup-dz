@@ -6,7 +6,7 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
   "nav.home": "Home",
-  "nav.directory": "Directory",
+  "nav.directory": "Courses",
   "nav.about": "About",
   "nav.admin": "Admin",
   "nav.explore": "Explore",
@@ -14,64 +14,64 @@ const en: Dict = {
   "lang.toggle": "العربية",
 
   "home.badge": "Made in Algeria · for Algerian students",
-  "home.title.a": "Build the portfolio that gets you into ",
-  "home.title.b": "world-class universities",
+  "home.title.a": "Real skills for a ",
+  "home.title.b": "competitive future",
   "home.title.c": ".",
-  "home.subtitle": "LevelUp DZ gathers the courses, competitions and volunteering opportunities that turn smart Algerian students into international candidates.",
-  "home.cta.browse": "Browse opportunities",
+  "home.subtitle": "School grades alone aren't enough to compete globally. LevelUp DZ helps Algerian students discover courses in programming, languages and modern skills — so they build a strong foundation and stand out internationally.",
+  "home.cta.browse": "Browse courses",
   "home.cta.mission": "Our mission",
-  "home.stat.global": "Global & local programs",
+  "home.stat.global": "Global & local courses",
   "home.stat.curated": "Curated for DZ students",
-  "home.stat.built": "Built for top universities",
-  "home.cat.courses.title": "Summer Courses",
-  "home.cat.courses.desc": "Programming, English, AI, soft skills — taught by the best.",
-  "home.cat.comp.title": "Competitions & Olympiads",
-  "home.cat.comp.desc": "Hackathons, math & informatics olympiads, global contests.",
-  "home.cat.vol.title": "Volunteering & Charities",
-  "home.cat.vol.desc": "Make social impact at home and around the world.",
+  "home.stat.built": "Built for real-world skills",
+
+  "home.cat.coding.title": "Programming & Tech",
+  "home.cat.coding.desc": "Web development, software, data — the skills shaping today's economy.",
+  "home.cat.lang.title": "Languages",
+  "home.cat.lang.desc": "English, French and more — open the doors to study and work abroad.",
+  "home.cat.ai.title": "AI & Modern Skills",
+  "home.cat.ai.desc": "Artificial intelligence, soft skills and the tools every modern student needs.",
   "home.explore": "Explore",
 
   "about.kicker": "Our mission",
-  "about.title.a": "Algerian talent deserves a ",
-  "about.title.b": "world stage",
+  "about.title.a": "Beyond grades — ",
+  "about.title.b": "real skills for real life",
   "about.title.c": ".",
-  "about.p1": "Every year, brilliant Algerian students are held back not by ability, but by access. They don't know the summer school exists. They miss the olympiad deadline. They never hear about the volunteering program that would have made their CV unforgettable.",
-  "about.p2": "LevelUp DZ fixes that. We gather, vet and translate the opportunities — courses, competitions and volunteering — that build the kind of portfolio top universities actually want. Free. Open. Made by students, for students.",
-  "about.pillar1.title": "Open the doors",
-  "about.pillar1.desc": "Curated programs that admissions officers in Cambridge, MIT and Paris recognize.",
-  "about.pillar2.title": "Show the way",
-  "about.pillar2.desc": "Filter by category and format so you find what fits your level and your city.",
-  "about.pillar3.title": "Lift the community",
-  "about.pillar3.desc": "Volunteering work that builds character and improves life in Algeria.",
+  "about.p1": "The traditional school system in Algeria does a lot, but it can't do everything. Many talented students finish their studies without ever touching the practical skills — programming, languages, modern tools — that the world now expects.",
+  "about.p2": "LevelUp DZ helps fill that gap. We gather quality courses that build a strong foundation and a competitive skill portfolio, so Algerian students grow into useful, confident citizens who can stand out internationally.",
+  "about.pillar1.title": "Build real skills",
+  "about.pillar1.desc": "Practical courses in coding, languages and modern tools — not just theory.",
+  "about.pillar2.title": "Find your path",
+  "about.pillar2.desc": "Filter by topic and format so you find what fits your level and your city.",
+  "about.pillar3.title": "Grow with confidence",
+  "about.pillar3.desc": "Become a useful citizen at home and a strong candidate anywhere in the world.",
   "about.ready.title": "Ready to level up?",
-  "about.ready.desc": "Open the directory and pick the first opportunity you'll apply to this month.",
-  "about.ready.cta": "Browse opportunities",
+  "about.ready.desc": "Open the directory and pick the first course you'll start this month.",
+  "about.ready.cta": "Browse courses",
 
-  "dir.title": "Opportunities Directory",
-  "dir.subtitle": "A curated collection updated for Algerian students. Filter by category and format, then apply directly from the card.",
+  "dir.title": "Courses Directory",
+  "dir.subtitle": "A curated collection of courses for Algerian students. Filter by topic and format, then start learning directly from the card.",
   "dir.search": "Search by title, organizer, tag…",
   "dir.filters": "Filters",
-  "dir.category": "Category",
+  "dir.topic": "Topic",
   "dir.format": "Format",
-  "dir.cat.all": "All",
-  "dir.cat.courses": "📚 Courses",
-  "dir.cat.competitions": "🏆 Competitions",
-  "dir.cat.volunteering": "🤝 Volunteering",
+  "dir.topic.all": "All topics",
+  "dir.topic.coding": "💻 Programming & Tech",
+  "dir.topic.languages": "🗣️ Languages",
+  "dir.topic.ai": "🤖 AI",
+  "dir.topic.soft": "✨ Soft Skills",
   "dir.fmt.all": "Any format",
   "dir.fmt.online": "Online",
   "dir.fmt.in_person": "In-person",
   "dir.fmt.hybrid": "Hybrid",
-  "dir.missing": "Found a missing opportunity? Email us — we'll add it to the directory.",
-  "dir.none.title": "No opportunities match these filters.",
-  "dir.none.desc": "Try a different category or clear your search.",
-  "dir.count.one": "opportunity",
-  "dir.count.many": "opportunities",
+  "dir.missing": "Found a missing course? Email us — we'll add it to the directory.",
+  "dir.none.title": "No courses match these filters.",
+  "dir.none.desc": "Try a different topic or clear your search.",
+  "dir.count.one": "course",
+  "dir.count.many": "courses",
 
   "card.cat.courses": "📚 Course",
-  "card.cat.competitions": "🏆 Competition",
-  "card.cat.volunteering": "🤝 Volunteering",
   "card.by": "by",
-  "card.apply": "Apply Now",
+  "card.apply": "Go to course",
 
   "fb.q": "Did you find this useful?",
   "fb.hint": "Tell us in one line what we should add next.",
@@ -82,13 +82,13 @@ const en: Dict = {
   "fb.thanks.desc": "Your feedback helps us improve.",
   "fb.toast.err": "Couldn't send feedback. Try again.",
   "fb.toast.ok": "Thanks for the feedback!",
-  "footer.tagline": "A directory of courses, competitions and volunteering built for Algerian students who dream of joining the world's best universities.",
+  "footer.tagline": "A directory of real-world courses built for Algerian students who want to grow strong skills and stand out internationally.",
   "footer.copyright": "Built with care for طلاب الجزائر.",
 };
 
 const ar: Dict = {
   "nav.home": "الرئيسية",
-  "nav.directory": "الفرص",
+  "nav.directory": "الدورات",
   "nav.about": "من نحن",
   "nav.admin": "الإدارة",
   "nav.explore": "استكشف",
@@ -96,64 +96,64 @@ const ar: Dict = {
   "lang.toggle": "English",
 
   "home.badge": "صُنع في الجزائر · للطلاب الجزائريين",
-  "home.title.a": "ابنِ ملفًا يقودك إلى ",
-  "home.title.b": "أرقى الجامعات العالمية",
+  "home.title.a": "مهارات حقيقية لمستقبل ",
+  "home.title.b": "تنافسي",
   "home.title.c": ".",
-  "home.subtitle": "يجمع LevelUp DZ الدورات والمسابقات وفرص التطوع التي تحوّل الطلاب الجزائريين الموهوبين إلى مرشحين دوليين.",
-  "home.cta.browse": "تصفح الفرص",
+  "home.subtitle": "علامات المدرسة وحدها لا تكفي للمنافسة عالميًا. يساعد LevelUp DZ الطلاب الجزائريين على اكتشاف دورات في البرمجة واللغات والمهارات الحديثة — ليبنوا أساسًا قويًا ويتميزوا دوليًا.",
+  "home.cta.browse": "تصفح الدورات",
   "home.cta.mission": "رسالتنا",
-  "home.stat.global": "برامج عالمية ومحلية",
+  "home.stat.global": "دورات عالمية ومحلية",
   "home.stat.curated": "مختارة للطلاب الجزائريين",
-  "home.stat.built": "مصمَّمة لأفضل الجامعات",
-  "home.cat.courses.title": "الدورات الصيفية",
-  "home.cat.courses.desc": "البرمجة، الإنجليزية، الذكاء الاصطناعي والمهارات الناعمة من أفضل المدرّبين.",
-  "home.cat.comp.title": "المسابقات والأولمبيادات",
-  "home.cat.comp.desc": "هاكاثونات، أولمبيادات رياضيات ومعلوماتية ومنافسات عالمية.",
-  "home.cat.vol.title": "التطوع والأعمال الخيرية",
-  "home.cat.vol.desc": "أحدث أثرًا اجتماعيًا في بلدك وفي العالم.",
+  "home.stat.built": "مبنية لمهارات الحياة الحقيقية",
+
+  "home.cat.coding.title": "البرمجة والتقنية",
+  "home.cat.coding.desc": "تطوير الويب والبرمجيات والبيانات — مهارات تصنع اقتصاد اليوم.",
+  "home.cat.lang.title": "اللغات",
+  "home.cat.lang.desc": "الإنجليزية والفرنسية وغيرها — أبواب للدراسة والعمل في الخارج.",
+  "home.cat.ai.title": "الذكاء الاصطناعي والمهارات الحديثة",
+  "home.cat.ai.desc": "الذكاء الاصطناعي والمهارات الناعمة والأدوات التي يحتاجها كل طالب اليوم.",
   "home.explore": "استكشف",
 
   "about.kicker": "رسالتنا",
-  "about.title.a": "الموهبة الجزائرية تستحق ",
-  "about.title.b": "منصة عالمية",
+  "about.title.a": "أبعد من العلامات — ",
+  "about.title.b": "مهارات حقيقية للحياة",
   "about.title.c": ".",
-  "about.p1": "في كل عام، يُحرم طلاب جزائريون موهوبون من الفرص، لا بسبب قدراتهم، بل بسبب عدم وصول المعلومة. لا يعلمون بوجود المدرسة الصيفية، أو يفوّتون موعد الأولمبياد، أو لا يسمعون عن برنامج التطوع الذي كان سيغيّر سيرتهم الذاتية.",
-  "about.p2": "LevelUp DZ يصلح ذلك. نجمع وننتقي ونترجم الفرص — دورات ومسابقات وتطوع — التي تبني الملف الذي تبحث عنه الجامعات الكبرى فعلًا. مجاني. مفتوح. صُنع بأيدي الطلاب للطلاب.",
-  "about.pillar1.title": "افتح الأبواب",
-  "about.pillar1.desc": "برامج مختارة يعترف بها المسؤولون عن القبول في كامبريدج وMIT وباريس.",
-  "about.pillar2.title": "ارسم الطريق",
-  "about.pillar2.desc": "فلترة حسب الفئة والصيغة لتجد ما يناسب مستواك ومدينتك.",
-  "about.pillar3.title": "ارفع المجتمع",
-  "about.pillar3.desc": "أعمال تطوعية تبني الشخصية وتحسّن الحياة في الجزائر.",
+  "about.p1": "النظام المدرسي التقليدي في الجزائر يقدّم الكثير، لكنه لا يستطيع تقديم كل شيء. كثير من الطلاب الموهوبين يُنهون دراستهم دون أن يلمسوا المهارات العملية — البرمجة، اللغات، الأدوات الحديثة — التي يطلبها العالم اليوم.",
+  "about.p2": "يساعد LevelUp DZ على سدّ هذه الفجوة. نجمع دورات نوعية تبني أساسًا قويًا وملفًا تنافسيًا من المهارات، ليتطور الطالب الجزائري إلى مواطن نافع وواثق قادر على التميّز دوليًا.",
+  "about.pillar1.title": "ابنِ مهارات حقيقية",
+  "about.pillar1.desc": "دورات عملية في البرمجة واللغات والأدوات الحديثة — لا مجرد نظريات.",
+  "about.pillar2.title": "اعثر على طريقك",
+  "about.pillar2.desc": "فلترة حسب الموضوع والصيغة لتجد ما يناسب مستواك ومدينتك.",
+  "about.pillar3.title": "انمُ بثقة",
+  "about.pillar3.desc": "كن مواطنًا نافعًا في بلدك ومرشحًا قويًا في أي مكان من العالم.",
   "about.ready.title": "هل أنت مستعد للارتقاء؟",
-  "about.ready.desc": "افتح الدليل واختر أول فرصة ستتقدم لها هذا الشهر.",
-  "about.ready.cta": "تصفح الفرص",
+  "about.ready.desc": "افتح الدليل واختر أول دورة ستبدأها هذا الشهر.",
+  "about.ready.cta": "تصفح الدورات",
 
-  "dir.title": "دليل الفرص",
-  "dir.subtitle": "مجموعة مختارة محدّثة للطلاب الجزائريين. فلتر حسب الفئة والصيغة ثم تقدّم مباشرة من البطاقة.",
+  "dir.title": "دليل الدورات",
+  "dir.subtitle": "مجموعة مختارة من الدورات للطلاب الجزائريين. فلتر حسب الموضوع والصيغة ثم ابدأ التعلم مباشرة من البطاقة.",
   "dir.search": "ابحث بالعنوان أو المنظّم أو الوسم…",
   "dir.filters": "الفلاتر",
-  "dir.category": "الفئة",
+  "dir.topic": "الموضوع",
   "dir.format": "الصيغة",
-  "dir.cat.all": "الكل",
-  "dir.cat.courses": "📚 دورات",
-  "dir.cat.competitions": "🏆 مسابقات",
-  "dir.cat.volunteering": "🤝 تطوع",
+  "dir.topic.all": "كل المواضيع",
+  "dir.topic.coding": "💻 البرمجة والتقنية",
+  "dir.topic.languages": "🗣️ اللغات",
+  "dir.topic.ai": "🤖 الذكاء الاصطناعي",
+  "dir.topic.soft": "✨ المهارات الناعمة",
   "dir.fmt.all": "أي صيغة",
   "dir.fmt.online": "عن بُعد",
   "dir.fmt.in_person": "حضوري",
   "dir.fmt.hybrid": "مختلط",
-  "dir.missing": "هل تعرف فرصة مفقودة؟ راسلنا وسنضيفها إلى الدليل.",
-  "dir.none.title": "لا توجد فرص تطابق هذه الفلاتر.",
-  "dir.none.desc": "جرّب فئة مختلفة أو امسح البحث.",
-  "dir.count.one": "فرصة",
-  "dir.count.many": "فرصة",
+  "dir.missing": "هل تعرف دورة مفقودة؟ راسلنا وسنضيفها إلى الدليل.",
+  "dir.none.title": "لا توجد دورات تطابق هذه الفلاتر.",
+  "dir.none.desc": "جرّب موضوعًا مختلفًا أو امسح البحث.",
+  "dir.count.one": "دورة",
+  "dir.count.many": "دورة",
 
   "card.cat.courses": "📚 دورة",
-  "card.cat.competitions": "🏆 مسابقة",
-  "card.cat.volunteering": "🤝 تطوع",
   "card.by": "بواسطة",
-  "card.apply": "قدّم الآن",
+  "card.apply": "ابدأ الدورة",
 
   "fb.q": "هل وجدت هذا مفيدًا؟",
   "fb.hint": "أخبرنا بسطر واحد ماذا تريد أن نضيف لاحقًا.",
@@ -164,7 +164,7 @@ const ar: Dict = {
   "fb.thanks.desc": "ملاحظاتك تساعدنا على التحسّن.",
   "fb.toast.err": "تعذّر إرسال الملاحظات. حاول مجددًا.",
   "fb.toast.ok": "شكرًا على ملاحظاتك!",
-  "footer.tagline": "دليل للدورات والمسابقات والتطوع، مصمَّم للطلاب الجزائريين الذين يحلمون بالالتحاق بأفضل جامعات العالم.",
+  "footer.tagline": "دليل لدورات حقيقية مصمَّم للطلاب الجزائريين الذين يريدون بناء مهارات قوية والتميّز دوليًا.",
   "footer.copyright": "صُنع بحبٍ لطلاب الجزائر.",
 };
 
@@ -178,21 +178,22 @@ type Ctx = {
   toggle: () => void;
 };
 
-const I18nContext = createContext<Ctx | null>(null);
+const I18nCtx = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => {
-    if (typeof window === "undefined") return "en";
-    return (window.localStorage.getItem("lang") as Lang) || "en";
-  });
+  const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
-    if (typeof document === "undefined") return;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    try {
-      window.localStorage.setItem("lang", lang);
-    } catch {}
+    const stored = (typeof window !== "undefined" && (localStorage.getItem("lang") as Lang | null)) || null;
+    if (stored === "en" || stored === "ar") setLangState(stored);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    }
+    if (typeof window !== "undefined") localStorage.setItem("lang", lang);
   }, [lang]);
 
   const setLang = (l: Lang) => setLangState(l);
@@ -200,16 +201,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const t = (key: string) => dicts[lang][key] ?? dicts.en[key] ?? key;
 
   return (
-    <I18nContext.Provider
-      value={{ lang, dir: lang === "ar" ? "rtl" : "ltr", t, setLang, toggle }}
-    >
+    <I18nCtx.Provider value={{ lang, dir: lang === "ar" ? "rtl" : "ltr", t, setLang, toggle }}>
       {children}
-    </I18nContext.Provider>
+    </I18nCtx.Provider>
   );
 }
 
 export function useI18n() {
-  const ctx = useContext(I18nContext);
-  if (!ctx) throw new Error("useI18n must be used within I18nProvider");
+  const ctx = useContext(I18nCtx);
+  if (!ctx) throw new Error("useI18n must be used inside I18nProvider");
   return ctx;
 }
