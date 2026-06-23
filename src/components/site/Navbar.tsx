@@ -3,6 +3,7 @@ import { Sparkles, Menu, X, Languages } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 const links = [
   { to: "/", key: "nav.home" },
@@ -47,6 +48,7 @@ export function Navbar() {
           })}
         </nav>
         <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           <button
             onClick={toggle}
             aria-label="Toggle language"
@@ -63,6 +65,7 @@ export function Navbar() {
           </Link>
         </div>
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <button
             onClick={toggle}
             aria-label="Toggle language"

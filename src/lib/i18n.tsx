@@ -84,6 +84,21 @@ const en: Dict = {
   "fb.toast.ok": "Thanks for the feedback!",
   "footer.tagline": "A directory of real-world courses built for Algerian students who want to grow strong skills and stand out internationally.",
   "footer.copyright": "Built with care for طلاب الجزائر.",
+
+  "streak.label": "Daily streak",
+  "streak.day": "Day Streak",
+  "streak.days": "Days Streak",
+  "streak.coach": "Your daily coach",
+  "streak.started": "Started",
+  "streak.completed": "Completed",
+  "streak.name.set": "Add your name",
+  "streak.name.change": "Change name",
+  "streak.name.placeholder": "Your first name",
+  "streak.msg.start": "Welcome{name} — pick one course today and plant the first spark.",
+  "streak.msg.great": "You're doing great today{name} — one small step keeps the streak alive!",
+  "streak.msg.keep": "Keep the flame burning{name} — consistency beats intensity.",
+  "streak.msg.fire": "You're on fire{name}! Future-you is already proud.",
+  "card.progress": "Progress",
 };
 
 const ar: Dict = {
@@ -166,6 +181,21 @@ const ar: Dict = {
   "fb.toast.ok": "شكرًا على ملاحظاتك!",
   "footer.tagline": "دليل لدورات حقيقية مصمَّم للطلاب الجزائريين الذين يريدون بناء مهارات قوية والتميّز دوليًا.",
   "footer.copyright": "صُنع بحبٍ لطلاب الجزائر.",
+
+  "streak.label": "السلسلة اليومية",
+  "streak.day": "يوم متواصل",
+  "streak.days": "أيام متواصلة",
+  "streak.coach": "مدرّبك اليومي",
+  "streak.started": "بدأت",
+  "streak.completed": "أكملت",
+  "streak.name.set": "أضف اسمك",
+  "streak.name.change": "غيّر الاسم",
+  "streak.name.placeholder": "اسمك الأول",
+  "streak.msg.start": "مرحبًا{name} — اختر دورة واحدة اليوم وأشعل الشرارة الأولى.",
+  "streak.msg.great": "أبليت حسنًا اليوم{name} — خطوة صغيرة تُبقي السلسلة حيّة!",
+  "streak.msg.keep": "أبقِ اللهب مشتعلًا{name} — الاستمرار خير من الاندفاع.",
+  "streak.msg.fire": "أنت في قمة العطاء{name}! المستقبل يفتخر بك سلفًا.",
+  "card.progress": "تقدّمك",
 };
 
 const dicts: Record<Lang, Dict> = { en, ar };
