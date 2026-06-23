@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Code2, Languages as LanguagesIcon, Sparkles, ArrowRight, Globe2, Target, Rocket } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { StreakWidget } from "@/components/site/StreakWidget";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -74,6 +75,11 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Daily streak / gamified tracker */}
+      <div className="pb-12 md:pb-16 -mt-10 md:-mt-14">
+        <StreakWidget />
+      </div>
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-5 pb-24">
