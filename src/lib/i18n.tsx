@@ -22,7 +22,7 @@ const en: Dict = {
   "home.cta.mission": "Our mission",
   "home.stat.global": "Global & local courses",
   "home.stat.curated": "Curated for DZ students",
-  "home.stat.built": "Built for real-world skills",
+  "home.stat.built": "Test for real-world skills",
 
   "home.cat.coding.title": "Programming & Tech",
   "home.cat.coding.desc": "Web development, software, data — the skills shaping today's economy.",
