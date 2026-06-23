@@ -66,11 +66,28 @@ function Index() {
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-              {stats.map((s) => (
-                <span key={s.label} className="inline-flex items-center gap-1.5">
-                  <s.icon className="h-3.5 w-3.5 text-primary" /> {s.label}
-                </span>
-              ))}
+              {stats.map((s) => {
+                const isBuilt = s.label === t("home.stat.built");
+                return (
+                  <span
+                    key={s.label}
+                    className={
+                      isBuilt
+                        ? "group inline-flex cursor-default items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-primary transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.04] hover:border-primary hover:bg-primary/10 hover:shadow-[0_8px_24px_-12px_oklch(0.72_0.11_185/0.55)]"
+                        : "inline-flex items-center gap-1.5"
+                    }
+                  >
+                    <s.icon
+                      className={
+                        isBuilt
+                          ? "h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:rotate-12"
+                          : "h-3.5 w-3.5 text-primary"
+                      }
+                    />{" "}
+                    {s.label}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>
