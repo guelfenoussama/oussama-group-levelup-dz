@@ -18,6 +18,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import { SignupPrompt } from "@/components/site/SignupPrompt";
+import { PostHogProvider } from "@/integrations/posthog/PostHogProvider";
 
 function NotFoundComponent() {
   return (
