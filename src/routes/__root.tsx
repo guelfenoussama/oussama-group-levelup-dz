@@ -86,10 +86,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "LevelUp DZ — Opportunities for Algerian Students" },
       { name: "description", content: "Courses in programming, languages and modern skills to help Algerian students build a strong foundation and stand out internationally." },
-      { property: "og:title", content: "LevelUp DZ" },
+      { property: "og:title", content: "LevelUp DZ — Opportunities for Algerian Students" },
       { property: "og:description", content: "Courses in programming, languages and modern skills to help Algerian students build a strong foundation and stand out internationally." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "LevelUp DZ — Opportunities for Algerian Students" },
+      { name: "twitter:description", content: "Courses in programming, languages and modern skills to help Algerian students build a strong foundation and stand out internationally." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/0dE4QKyVGzbj7md0jIGy0qtnOYs2/social-images/social-1782310385885-logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/0dE4QKyVGzbj7md0jIGy0qtnOYs2/social-images/social-1782310385885-logo.webp" },
     ],
     links: [
       {
