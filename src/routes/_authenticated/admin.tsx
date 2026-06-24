@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Pencil, Trash2, Plus, LogOut, ShieldAlert, Users, Eye } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, ShieldAlert, Users, Eye, MessageSquare, ThumbsUp, ThumbsDown } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 
 type Opp = Database["public"]["Tables"]["opportunities"]["Row"];
@@ -73,6 +73,19 @@ function Admin() {
         users: Number(u.data ?? 0),
         visitors: Number(v.data ?? 0),
       };
+    },
+  });
+
+  const { data: feedback } = useQuery({
+    queryKey: ["admin", "feedback"],
+    enabled: isAdmin === true,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("feedback")
+        .select("id, is_useful, suggestion, created_at")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data;
     },
   });
 
@@ -179,6 +192,43 @@ function Admin() {
           hint="Unique website visits"
           icon={<Eye className="h-5 w-5" />}
         />
+      </div>
+
+      <div className="mt-10">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <MessageSquare className="h-5 w-5" /> User feedback
+          </h2>
+          <span className="text-xs text-muted-foreground tabular-nums">
+            {feedback?.length ?? 0} total
+          </span>
+        </div>
+        <div className="mt-3 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+          {(feedback ?? []).map((f) => (
+            <div key={f.id} className="flex items-start gap-3 p-4">
+              <div
+                className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg ${
+                  f.is_useful
+                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    : "bg-destructive/10 text-destructive"
+                }`}
+              >
+                {f.is_useful ? <ThumbsUp className="h-4 w-4" /> : <ThumbsDown className="h-4 w-4" />}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm whitespace-pre-wrap break-words">
+                  {f.suggestion?.trim() ? f.suggestion : <span className="italic text-muted-foreground">No comment</span>}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {new Date(f.created_at).toLocaleString()}
+                </p>
+              </div>
+            </div>
+          ))}
+          {feedback?.length === 0 && (
+            <div className="p-6 text-sm text-muted-foreground">No feedback yet.</div>
+          )}
+        </div>
       </div>
 
       <form onSubmit={save} className="mt-8 rounded-2xl border border-border bg-card p-6 soft-shadow">
