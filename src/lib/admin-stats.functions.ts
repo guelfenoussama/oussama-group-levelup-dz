@@ -19,7 +19,7 @@ export const getAdminStats = createServerFn({ method: "GET" })
       supabaseAdmin.from("site_visits").select("*", { count: "exact", head: true }),
     ]);
     return {
-      users: Number(usersList?.total ?? 0),
+      users: Number((usersList as { total?: number } | null)?.total ?? 0),
       visitors: Number(visitsCount ?? 0),
     };
   });
