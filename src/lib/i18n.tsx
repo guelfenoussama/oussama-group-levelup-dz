@@ -99,6 +99,11 @@ const en: Dict = {
   "streak.msg.keep": "Keep the flame burning{name} — consistency beats intensity.",
   "streak.msg.fire": "You're on fire{name}! Future-you is already proud.",
   "card.progress": "Progress",
+  "signup.prompt.title": "Save your streak forever 🔥",
+  "signup.prompt.desc": "You've been exploring for a few minutes — nice! Create a free account to permanently save your streak, progress and favourite courses across devices.",
+  "signup.prompt.perk": "Free forever · takes 20 seconds · no spam.",
+  "signup.prompt.cta": "Create my free account",
+  "signup.prompt.later": "Maybe later",
 };
 
 const ar: Dict = {
@@ -196,6 +201,11 @@ const ar: Dict = {
   "streak.msg.keep": "أبقِ اللهب مشتعلًا{name} — الاستمرار خير من الاندفاع.",
   "streak.msg.fire": "أنت في قمة العطاء{name}! المستقبل يفتخر بك سلفًا.",
   "card.progress": "تقدّمك",
+  "signup.prompt.title": "احفظ سلسلتك إلى الأبد 🔥",
+  "signup.prompt.desc": "لقد قضيت بضع دقائق في الاستكشاف — رائع! أنشئ حسابًا مجانيًا لحفظ سلسلتك وتقدّمك ودوراتك المفضّلة بشكل دائم عبر أجهزتك.",
+  "signup.prompt.perk": "مجاني للأبد · يستغرق ٢٠ ثانية · بلا إزعاج.",
+  "signup.prompt.cta": "أنشئ حسابي المجاني",
+  "signup.prompt.later": "ربما لاحقًا",
 };
 
 const dicts: Record<Lang, Dict> = { en, ar };

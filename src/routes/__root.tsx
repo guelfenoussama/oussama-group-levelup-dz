@@ -17,6 +17,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
+import { SignupPrompt } from "@/components/site/SignupPrompt";
 
 function NotFoundComponent() {
   return (
@@ -164,6 +165,7 @@ function RootComponent() {
             <Footer />
           </div>
           <Toaster richColors position="top-center" />
+          <SignupPrompt />
         </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
