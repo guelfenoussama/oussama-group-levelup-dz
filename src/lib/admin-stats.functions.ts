@@ -14,12 +14,12 @@ export const getAdminStats = createServerFn({ method: "GET" })
       throw new Response("Forbidden", { status: 403 });
     }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const [usersRes, visitsRes] = await Promise.all([
-      supabaseAdmin.rpc("get_total_users"),
-      supabaseAdmin.rpc("get_total_visitors"),
+    const [{ data: usersList }, { count: visitsCount }] = await Promise.all([
+      supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1 }),
+      supabaseAdmin.from("site_visits").select("*", { count: "exact", head: true }),
     ]);
     return {
-      users: Number(usersRes.data ?? 0),
-      visitors: Number(visitsRes.data ?? 0),
+      users: Number(usersList?.total ?? 0),
+      visitors: Number(visitsCount ?? 0),
     };
   });
