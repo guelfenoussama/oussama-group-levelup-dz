@@ -99,6 +99,11 @@ const en: Dict = {
   "streak.msg.keep": "Keep the flame burning{name} — consistency beats intensity.",
   "streak.msg.fire": "You're on fire{name}! Future-you is already proud.",
   "card.progress": "Progress",
+  "signup.prompt.title": "Save your streak forever 🔥",
+  "signup.prompt.desc": "You've been exploring for a few minutes — nice! Create a free account to permanently save your streak, progress and favourite courses across devices.",
+  "signup.prompt.perk": "Free forever · takes 20 seconds · no spam.",
+  "signup.prompt.cta": "Create my free account",
+  "signup.prompt.later": "Maybe later",
 };
 
 const ar: Dict = {
