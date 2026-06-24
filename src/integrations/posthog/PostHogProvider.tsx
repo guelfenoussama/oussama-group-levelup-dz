@@ -17,10 +17,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
         if (import.meta.env.DEV) ph.debug();
       },
     });
-
-    return () => {
-      posthog.shutdown();
-    };
   }, []);
 
   return <>{children}</>;
