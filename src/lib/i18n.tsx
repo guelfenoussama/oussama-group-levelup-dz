@@ -201,6 +201,11 @@ const ar: Dict = {
   "streak.msg.keep": "أبقِ اللهب مشتعلًا{name} — الاستمرار خير من الاندفاع.",
   "streak.msg.fire": "أنت في قمة العطاء{name}! المستقبل يفتخر بك سلفًا.",
   "card.progress": "تقدّمك",
+  "signup.prompt.title": "احفظ سلسلتك إلى الأبد 🔥",
+  "signup.prompt.desc": "لقد قضيت بضع دقائق في الاستكشاف — رائع! أنشئ حسابًا مجانيًا لحفظ سلسلتك وتقدّمك ودوراتك المفضّلة بشكل دائم عبر أجهزتك.",
+  "signup.prompt.perk": "مجاني للأبد · يستغرق ٢٠ ثانية · بلا إزعاج.",
+  "signup.prompt.cta": "أنشئ حسابي المجاني",
+  "signup.prompt.later": "ربما لاحقًا",
 };
 
 const dicts: Record<Lang, Dict> = { en, ar };
