@@ -1,7 +1,9 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
+import { getAdminStats } from "@/lib/admin-stats.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,6 +39,7 @@ function Admin() {
   const [form, setForm] = useState<OppInsert>(empty);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const fetchAdminStats = useServerFn(getAdminStats);
 
   useEffect(() => {
     (async () => {
@@ -64,16 +67,7 @@ function Admin() {
   const { data: stats } = useQuery({
     queryKey: ["admin", "stats"],
     enabled: isAdmin === true,
-    queryFn: async () => {
-      const [u, v] = await Promise.all([
-        supabase.rpc("get_total_users"),
-        supabase.rpc("get_total_visitors"),
-      ]);
-      return {
-        users: Number(u.data ?? 0),
-        visitors: Number(v.data ?? 0),
-      };
-    },
+    queryFn: () => fetchAdminStats(),
   });
 
   const { data: feedback } = useQuery({
