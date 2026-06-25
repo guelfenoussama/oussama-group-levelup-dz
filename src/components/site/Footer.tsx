@@ -36,7 +36,6 @@ export function Footer() {
     const { error } = await supabase.from("feedback").insert({ is_useful: useful, suggestion: suggestion.trim() || null });
     setBusy(false);
     if (error) {
-      setShowFeedback(true);
       toast.error(t("fb.toast.err"));
       return;
     }
