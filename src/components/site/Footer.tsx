@@ -31,14 +31,15 @@ export function Footer() {
 
   async function submit(useful: boolean) {
     setVote(useful);
+    markFeedbackComplete();
     setBusy(true);
     const { error } = await supabase.from("feedback").insert({ is_useful: useful, suggestion: suggestion.trim() || null });
     setBusy(false);
     if (error) {
+      setShowFeedback(true);
       toast.error(t("fb.toast.err"));
       return;
     }
-    markFeedbackComplete();
     toast.success(t("fb.toast.ok"));
   }
 
