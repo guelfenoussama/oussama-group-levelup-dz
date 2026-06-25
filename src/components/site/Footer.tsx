@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThumbsUp, ThumbsDown, Send, Sparkles } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -8,12 +8,19 @@ import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
 import { ShareButtons } from "@/components/site/ShareButtons";
 
+const FEEDBACK_STORAGE_KEY = "levelup_feedback_interacted";
+
 export function Footer() {
   const { t } = useI18n();
   const [vote, setVote] = useState<boolean | null>(null);
   const [suggestion, setSuggestion] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setSubmitted(localStorage.getItem(FEEDBACK_STORAGE_KEY) === "true");
+  }, []);
 
   async function submit(useful: boolean) {
     setVote(useful);
@@ -23,6 +30,9 @@ export function Footer() {
     if (error) {
       toast.error(t("fb.toast.err"));
       return;
+    }
+    if (typeof window !== "undefined") {
+      localStorage.setItem(FEEDBACK_STORAGE_KEY, "true");
     }
     setSubmitted(true);
     toast.success(t("fb.toast.ok"));
@@ -52,16 +62,8 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-6 soft-shadow animate-fade-up">
-            {submitted ? (
-              <div className="py-8 text-center">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-accent-foreground">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-                <h3 className="mt-3 text-base font-semibold">{t("fb.thanks.title")}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{t("fb.thanks.desc")}</p>
-              </div>
-            ) : (
+          {!submitted && (
+            <div className="rounded-2xl border border-border bg-card p-6 soft-shadow animate-fade-up">
               <>
                 <h3 className="text-base font-semibold">{t("fb.q")}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{t("fb.hint")}</p>
@@ -104,8 +106,8 @@ export function Footer() {
                   </Button>
                 </div>
               </>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
