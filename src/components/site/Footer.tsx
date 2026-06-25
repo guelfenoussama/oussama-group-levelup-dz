@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
+import { ShareButtons } from "@/components/site/ShareButtons";
 
 export function Footer() {
   const { t } = useI18n();
@@ -43,6 +44,9 @@ export function Footer() {
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               {t("footer.tagline")}
             </p>
+            <div className="mt-6 max-w-md">
+              <ShareButtons variant="panel" url="https://oussama-group-levelup-dz.lovable.app" />
+            </div>
             <p className="mt-8 text-xs text-muted-foreground">
               © {new Date().getFullYear()} LevelUp DZ — {t("footer.copyright")}
             </p>
