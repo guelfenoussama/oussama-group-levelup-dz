@@ -104,6 +104,14 @@ const en: Dict = {
   "signup.prompt.perk": "Free forever · takes 20 seconds · no spam.",
   "signup.prompt.cta": "Create my free account",
   "signup.prompt.later": "Maybe later",
+
+  "share.short": "Share",
+  "share.copy": "Copy link",
+  "share.copied": "Link copied!",
+  "share.copyErr": "Couldn't copy link.",
+  "share.course.label": "Share this course",
+  "share.platform.title": "Share LevelUp DZ",
+  "share.platform.desc": "Help another Algerian student discover real-world skills — share the platform in one click.",
 };
 
 const ar: Dict = {
@@ -206,6 +214,14 @@ const ar: Dict = {
   "signup.prompt.perk": "مجاني للأبد · يستغرق ٢٠ ثانية · بلا إزعاج.",
   "signup.prompt.cta": "أنشئ حسابي المجاني",
   "signup.prompt.later": "ربما لاحقًا",
+
+  "share.short": "شارك",
+  "share.copy": "نسخ الرابط",
+  "share.copied": "تم نسخ الرابط!",
+  "share.copyErr": "تعذّر نسخ الرابط.",
+  "share.course.label": "شارك هذه الدورة",
+  "share.platform.title": "شارك LevelUp DZ",
+  "share.platform.desc": "ساعد طالبًا جزائريًا آخر على اكتشاف مهارات حقيقية — شارك المنصّة بنقرة واحدة.",
 };
 
 const dicts: Record<Lang, Dict> = { en, ar };
