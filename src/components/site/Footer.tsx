@@ -14,13 +14,20 @@ export function Footer() {
   const { t } = useI18n();
   const [vote, setVote] = useState<boolean | null>(null);
   const [suggestion, setSuggestion] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setSubmitted(localStorage.getItem(FEEDBACK_STORAGE_KEY) === "true");
+    setShowFeedback(localStorage.getItem(FEEDBACK_STORAGE_KEY) !== "true");
   }, []);
+
+  function markFeedbackComplete() {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(FEEDBACK_STORAGE_KEY, "true");
+    }
+    setShowFeedback(false);
+  }
 
   async function submit(useful: boolean) {
     setVote(useful);
@@ -31,10 +38,7 @@ export function Footer() {
       toast.error(t("fb.toast.err"));
       return;
     }
-    if (typeof window !== "undefined") {
-      localStorage.setItem(FEEDBACK_STORAGE_KEY, "true");
-    }
-    setSubmitted(true);
+    markFeedbackComplete();
     toast.success(t("fb.toast.ok"));
   }
 
@@ -62,7 +66,7 @@ export function Footer() {
             </p>
           </div>
 
-          {!submitted && (
+          {showFeedback && (
             <div className="rounded-2xl border border-border bg-card p-6 soft-shadow animate-fade-up">
               <>
                 <h3 className="text-base font-semibold">{t("fb.q")}</h3>
