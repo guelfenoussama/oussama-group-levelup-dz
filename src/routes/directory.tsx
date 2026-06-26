@@ -282,7 +282,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleStart}
-        className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:scale-[1.02] hover:opacity-95"
+        className="btn-pop mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-95"
       >
         {progress > 0 ? "Go to Course" : "Start Learning"}
         <ExternalLink className="h-3.5 w-3.5" />
