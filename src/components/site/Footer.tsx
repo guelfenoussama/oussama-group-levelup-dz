@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
 import { ShareButtons } from "@/components/site/ShareButtons";
 
-const FEEDBACK_STORAGE_KEY = "levelup_feedback_interacted";
+const FEEDBACK_STORAGE_KEY = "hasInteractedWithFeedback";
+const LEGACY_FEEDBACK_STORAGE_KEY = "levelup_feedback_interacted";
 
 export function Footer() {
   const { t } = useI18n();
@@ -19,7 +20,14 @@ export function Footer() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setShowFeedback(localStorage.getItem(FEEDBACK_STORAGE_KEY) !== "true");
+    const hasInteracted = localStorage.getItem(FEEDBACK_STORAGE_KEY) === "true";
+    const hasLegacyInteraction = localStorage.getItem(LEGACY_FEEDBACK_STORAGE_KEY) === "true";
+
+    if (hasLegacyInteraction && !hasInteracted) {
+      localStorage.setItem(FEEDBACK_STORAGE_KEY, "true");
+    }
+
+    setShowFeedback(!hasInteracted && !hasLegacyInteraction);
   }, []);
 
   function markFeedbackComplete() {
