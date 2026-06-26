@@ -54,13 +54,13 @@ function Index() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/directory"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:scale-[1.02] hover:opacity-95"
+                className="btn-pop inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-95"
               >
                 {t("home.cta.browse")} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-secondary"
+                className="btn-pop inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary hover:border-primary/40"
               >
                 {t("home.cta.mission")}
               </Link>
