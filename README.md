@@ -106,3 +106,22 @@ Built through self-learning and continuous practice.
 
 > **School gives students grades. Skills build careers. LevelUp DZ helps Algerian students discover the skills that school often doesn't teach.**
 *Made with 💻, 📊 (Custom CSV), and 🎯 in Algeria for Algerian students.*
+
+---
+
+## AI Assistance
+
+This project was developed with AI-assisted tools.
+
+I designed the idea, selected and organized the course dataset, defined the platform structure and user experience, and iterated on the product design. Lovable was used to accelerate the implementation of the web interface based on my specifications.
+
+The educational content, course selection, and overall product vision are my own.
+
+---
+
+## 👨‍💻 Developer
+
+**Oussama**  
+Algeria
+
+Designed and curated to help Algerian students discover practical skills beyond traditional education.
