@@ -18,6 +18,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import { SignupPrompt } from "@/components/site/SignupPrompt";
+import { FeedbackModal } from "@/components/site/FeedbackModal";
 import { PostHogProvider } from "@/integrations/posthog/PostHogProvider";
 
 function NotFoundComponent() {
@@ -172,6 +173,7 @@ function RootComponent() {
             </div>
             <Toaster richColors position="top-center" />
             <SignupPrompt />
+            <FeedbackModal />
           </PostHogProvider>
         </I18nProvider>
       </ThemeProvider>
