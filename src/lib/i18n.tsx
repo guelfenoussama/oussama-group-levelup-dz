@@ -77,11 +77,18 @@ const en: Dict = {
   "fb.hint": "Tell us in one line what we should add next.",
   "fb.yes": "Yes",
   "fb.no": "Not yet",
-  "fb.placeholder": "Optional: a quick suggestion…",
+  "fb.placeholder": "What courses or features do you want us to add to this website? Help us build it together!",
   "fb.thanks.title": "You're the best ✨",
   "fb.thanks.desc": "Your feedback helps us improve.",
   "fb.toast.err": "Couldn't send feedback. Try again.",
   "fb.toast.ok": "Thanks for the feedback!",
+  "ideas.title": "Share Your Ideas!",
+  "ideas.subtitle": "Help us shape what comes next.",
+  "ideas.placeholder": "What courses or features do you want us to add to this website? Help us build it together!",
+  "ideas.submit": "Send idea",
+  "ideas.empty": "Write your idea first.",
+  "ideas.toast.ok": "Thanks! Your idea was sent.",
+  "ideas.toast.err": "Couldn't send your idea. Try again.",
   "footer.tagline": "A directory of real-world courses built for Algerian students who want to grow strong skills and stand out internationally.",
   "footer.copyright": "Built with care for طلاب الجزائر.",
 
@@ -104,6 +111,14 @@ const en: Dict = {
   "signup.prompt.perk": "Free forever · takes 20 seconds · no spam.",
   "signup.prompt.cta": "Create my free account",
   "signup.prompt.later": "Maybe later",
+
+  "share.short": "Share",
+  "share.copy": "Copy link",
+  "share.copied": "Link copied!",
+  "share.copyErr": "Couldn't copy link.",
+  "share.course.label": "Share this course",
+  "share.platform.title": "Share LevelUp DZ",
+  "share.platform.desc": "Help another Algerian student discover real-world skills — share the platform in one click.",
 };
 
 const ar: Dict = {
@@ -179,11 +194,18 @@ const ar: Dict = {
   "fb.hint": "أخبرنا بسطر واحد ماذا تريد أن نضيف لاحقًا.",
   "fb.yes": "نعم",
   "fb.no": "ليس بعد",
-  "fb.placeholder": "اختياري: اقتراح سريع…",
+  "fb.placeholder": "What courses or features do you want us to add to this website? Help us build it together!",
   "fb.thanks.title": "أنت الأفضل ✨",
   "fb.thanks.desc": "ملاحظاتك تساعدنا على التحسّن.",
   "fb.toast.err": "تعذّر إرسال الملاحظات. حاول مجددًا.",
   "fb.toast.ok": "شكرًا على ملاحظاتك!",
+  "ideas.title": "شاركنا أفكارك!",
+  "ideas.subtitle": "ساعدنا في تشكيل ما هو قادم.",
+  "ideas.placeholder": "ما الدورات أو الميزات التي تريد أن نضيفها؟ ساعدنا في بناء المنصة معًا!",
+  "ideas.submit": "إرسال الفكرة",
+  "ideas.empty": "اكتب فكرتك أولًا.",
+  "ideas.toast.ok": "شكرًا! تم إرسال فكرتك.",
+  "ideas.toast.err": "تعذّر إرسال فكرتك. حاول مجددًا.",
   "footer.tagline": "دليل لدورات حقيقية مصمَّم للطلاب الجزائريين الذين يريدون بناء مهارات قوية والتميّز دوليًا.",
   "footer.copyright": "صُنع بحبٍ لطلاب الجزائر.",
 
@@ -206,6 +228,14 @@ const ar: Dict = {
   "signup.prompt.perk": "مجاني للأبد · يستغرق ٢٠ ثانية · بلا إزعاج.",
   "signup.prompt.cta": "أنشئ حسابي المجاني",
   "signup.prompt.later": "ربما لاحقًا",
+
+  "share.short": "شارك",
+  "share.copy": "نسخ الرابط",
+  "share.copied": "تم نسخ الرابط!",
+  "share.copyErr": "تعذّر نسخ الرابط.",
+  "share.course.label": "شارك هذه الدورة",
+  "share.platform.title": "شارك LevelUp DZ",
+  "share.platform.desc": "ساعد طالبًا جزائريًا آخر على اكتشاف مهارات حقيقية — شارك المنصّة بنقرة واحدة.",
 };
 
 const dicts: Record<Lang, Dict> = { en, ar };

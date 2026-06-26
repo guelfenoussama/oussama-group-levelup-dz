@@ -4,6 +4,7 @@ import type { Database } from "@/integrations/supabase/types";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
 import { bumpCourseProgress, getCourseProgress } from "@/lib/tracker";
+import { ShareButtons } from "@/components/site/ShareButtons";
 
 type Opp = Database["public"]["Tables"]["opportunities"]["Row"];
 
@@ -83,11 +84,14 @@ export function OpportunityCard({ opp, index = 0 }: { opp: Opp; index?: number }
         target="_blank"
         rel="noreferrer noopener"
         onClick={onOpen}
-        className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 group-hover:gap-2.5"
+        className="btn-pop mt-4 inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-95 group-hover:gap-2.5"
       >
         {t("card.apply")}
         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-12 rtl:-scale-x-100" />
       </a>
+      <div className="mt-4 border-t border-border/60 pt-3">
+        <ShareButtons url={opp.link} title={opp.title} label={t("share.course.label")} />
+      </div>
     </article>
   );
 }

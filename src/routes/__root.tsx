@@ -18,6 +18,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import { SignupPrompt } from "@/components/site/SignupPrompt";
+import { FeedbackModal } from "@/components/site/FeedbackModal";
+import { PostHogProvider } from "@/integrations/posthog/PostHogProvider";
 
 function NotFoundComponent() {
   return (
@@ -116,7 +118,7 @@ function RootShell({ children }: { children: ReactNode }) {
           // No-flash: apply persisted theme before first paint
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}",
+              "try{var t=localStorage.getItem('theme');var d=t!=='light';if(d){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}",
           }}
         />
         <HeadContent />
@@ -161,15 +163,18 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <I18nProvider>
-          <div className="flex min-h-screen flex-col bg-background text-foreground">
-            <Navbar />
-            <main className="flex-1">
-              <Outlet />
-            </main>
-            <Footer />
-          </div>
-          <Toaster richColors position="top-center" />
-          <SignupPrompt />
+          <PostHogProvider>
+            <div className="flex min-h-screen flex-col bg-background text-foreground">
+              <Navbar />
+              <main className="flex-1">
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
+            <Toaster richColors position="top-center" />
+            <SignupPrompt />
+            <FeedbackModal />
+          </PostHogProvider>
         </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
