@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Code2, Languages as LanguagesIcon, Sparkles, ArrowRight, Globe2, Target, Rocket } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { StreakWidget } from "@/components/site/StreakWidget";
+import { TrustStats } from "@/components/site/TrustStats";
+import { TrustedPlatforms } from "@/components/site/TrustedPlatforms";
+import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,29 +41,30 @@ function Index() {
               "radial-gradient(60% 60% at 50% 0%, oklch(0.94 0.05 185 / 0.6), transparent 70%), radial-gradient(40% 40% at 80% 30%, oklch(0.95 0.06 70 / 0.4), transparent 70%)",
           }}
         />
-        <div className="mx-auto max-w-7xl px-5 pt-20 pb-24 md:pt-28 md:pb-32">
+        <div className="mx-auto max-w-7xl px-5 pt-16 pb-20 md:pt-24 md:pb-28">
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground soft-shadow">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {t("home.badge")}
             </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
               {t("home.title.a")}
               <span className="brand-gradient-text">{t("home.title.b")}</span>
               {t("home.title.c")}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {t("home.subtitle")}
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/directory"
-                className="btn-pop inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-95"
+                className="btn-pop group relative inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_oklch(0.72_0.11_185/0.6)] hover:opacity-95 md:text-base"
               >
-                {t("home.cta.browse")} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                {t("home.cta.browse")}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
               </Link>
               <Link
                 to="/about"
-                className="btn-pop inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary hover:border-primary/40"
+                className="btn-pop inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-6 py-3.5 text-sm font-medium text-foreground hover:bg-secondary hover:border-primary/40"
               >
                 {t("home.cta.mission")}
               </Link>
@@ -93,33 +97,58 @@ function Index() {
         </div>
       </section>
 
+      {/* Trust — real stats derived from the directory */}
+      <TrustStats />
+
+      {/* Trusted learning platforms */}
+      <TrustedPlatforms />
+
       {/* Daily streak / gamified tracker */}
-      <div className="pb-12 md:pb-16 -mt-10 md:-mt-14">
+      <div className="pb-12 md:pb-16">
         <StreakWidget />
       </div>
 
       {/* Categories */}
-      <section className="mx-auto max-w-7xl px-5 pb-24">
+      <section aria-labelledby="cats" className="mx-auto max-w-7xl px-5 pb-20 md:pb-24">
+        <div className="mx-auto mb-10 max-w-2xl text-center animate-fade-up">
+          <h2 id="cats" className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Three tracks, one goal
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground md:text-base">
+            Pick where you want to grow first — you can always switch tracks later.
+          </p>
+        </div>
         <div className="grid gap-5 md:grid-cols-3">
           {categories.map((c, i) => (
             <Link
               key={c.title}
               to="/directory"
-              className="group rounded-2xl border border-border bg-card p-7 soft-shadow card-lift animate-fade-up"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 soft-shadow card-lift animate-fade-up"
               style={{ animationDelay: `${i * 80}ms` }}
             >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(60% 80% at 100% 0%, oklch(0.72 0.11 185 / 0.12), transparent 70%)",
+                }}
+              />
               <div className={`grid h-12 w-12 place-items-center rounded-xl ${c.tint}`}>
                 <c.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 text-lg font-semibold tracking-tight">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              <h3 className="relative mt-5 text-lg font-semibold tracking-tight">{c.title}</h3>
+              <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+              <span className="relative mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
                 {t("home.explore")} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
               </span>
             </Link>
           ))}
         </div>
       </section>
+
+      {/* Social proof — testimonials placeholder */}
+      <Testimonials />
     </>
   );
 }
