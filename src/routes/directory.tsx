@@ -6,15 +6,12 @@ import {
   Flame,
   ExternalLink,
   BookOpen,
-  Code2,
-  Sparkles,
-  Languages as LanguagesIcon,
-  GraduationCap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
 import { bumpCourseProgress, getCourseProgress, bumpStreak } from "@/lib/tracker";
 import { COURSES, type Course } from "@/lib/courses";
+import { CATEGORY_THEME, categoryStyle } from "@/lib/categoryTheme";
 
 export const Route = createFileRoute("/directory")({
   head: () => ({
@@ -34,14 +31,6 @@ const CATEGORY_LABEL: Record<Course["category"], string> = {
   learningenglish: "English",
   learningfrench: "French",
   softskills: "Soft Skills",
-};
-
-const CATEGORY_ICON: Record<Course["category"], typeof Code2> = {
-  programming: Code2,
-  ai: Sparkles,
-  learningenglish: LanguagesIcon,
-  learningfrench: LanguagesIcon,
-  softskills: GraduationCap,
 };
 
 const LANGUAGE_LABEL: Record<Course["language"], string> = {
@@ -142,7 +131,7 @@ function Directory() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-[260px_1fr]">
         <aside className={cn("space-y-6 md:block", open ? "block" : "hidden")}>
-          <FilterGroup title="Category" options={CATEGORY_OPTIONS} value={category} onChange={setCategory} />
+          <CategoryFilter value={category} onChange={setCategory} options={CATEGORY_OPTIONS} />
           <FilterGroup title="Language" options={LANGUAGE_OPTIONS} value={language} onChange={setLanguage} />
           <FilterGroup title="Price" options={PRICE_OPTIONS} value={price} onChange={setPrice} />
         </aside>
@@ -175,7 +164,8 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
   useEffect(() => {
     setProgress(getCourseProgress(id));
   }, [id]);
-  const Icon = CATEGORY_ICON[course.category];
+  const theme = CATEGORY_THEME[course.category];
+  const Icon = theme.icon;
   const isArabic = course.language === "arabic";
   const isFree = course.price === "Free";
 
@@ -185,11 +175,21 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
 
   return (
     <article
-      className="group flex h-full flex-col rounded-2xl border border-border bg-card p-5 soft-shadow card-lift animate-fade-up"
-      style={{ animationDelay: `${Math.min(index * 40, 320)}ms` }}
+      className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-5 soft-shadow card-lift animate-fade-up transition-colors hover:border-[color-mix(in_oklab,var(--cat)_45%,transparent)]"
+      style={{
+        ...categoryStyle(course.category),
+        animationDelay: `${Math.min(index * 40, 320)}ms`,
+      }}
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+        <div
+          className="grid h-11 w-11 place-items-center rounded-xl transition-all duration-300 group-hover:scale-110"
+          style={{
+            background: "color-mix(in oklab, var(--cat) 15%, transparent)",
+            color: "var(--cat)",
+            boxShadow: "0 0 0 1px color-mix(in oklab, var(--cat) 25%, transparent), 0 8px 24px -12px color-mix(in oklab, var(--cat) 55%, transparent)",
+          }}
+        >
           <Icon className="h-5 w-5" />
         </div>
         <span
@@ -226,7 +226,10 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
           <div
             className="h-full rounded-full transition-all duration-500"
-            style={{ width: `${progress}%`, background: "var(--brand-gradient)" }}
+            style={{
+              width: `${progress}%`,
+              background: "linear-gradient(90deg, var(--cat), var(--cat-soft))",
+            }}
           />
         </div>
       </div>
@@ -236,12 +239,78 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleStart}
-        className="btn-pop mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-95"
+        className="btn-pop mt-5 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-[oklch(0.14_0.02_250)] hover:opacity-95"
+        style={{
+          background: "linear-gradient(135deg, var(--cat), var(--cat-soft))",
+          boxShadow: "0 8px 22px -10px color-mix(in oklab, var(--cat) 65%, transparent)",
+        }}
       >
         {progress > 0 ? "Go to Course" : "Start Learning"}
         <ExternalLink className="h-3.5 w-3.5" />
       </a>
     </article>
+  );
+}
+
+function CategoryFilter({
+  value,
+  onChange,
+  options,
+}: {
+  value: "all" | Course["category"];
+  onChange: (v: "all" | Course["category"]) => void;
+  options: ReadonlyArray<{ id: "all" | Course["category"]; label: string }>;
+}) {
+  return (
+    <div>
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        Category
+      </h3>
+      <div className="flex flex-col gap-1">
+        {options.map((o) => {
+          const theme = o.id === "all" ? null : CATEGORY_THEME[o.id];
+          const Icon = theme?.icon ?? BookOpen;
+          const active = value === o.id;
+          return (
+            <button
+              key={o.id}
+              onClick={() => onChange(o.id)}
+              className={cn(
+                "group flex items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm font-medium transition-all",
+                active
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+              )}
+              style={
+                active
+                  ? {
+                      background: theme
+                        ? "color-mix(in oklab, var(--tmp) 18%, transparent)"
+                        : undefined,
+                      boxShadow: theme
+                        ? "inset 0 0 0 1px color-mix(in oklab, var(--tmp) 35%, transparent)"
+                        : undefined,
+                      ["--tmp" as string]: theme?.color,
+                    }
+                  : undefined
+              }
+            >
+              <span
+                className="grid h-6 w-6 place-items-center rounded-md transition-transform group-hover:scale-110"
+                style={{
+                  background: theme ? "color-mix(in oklab, var(--ic) 18%, transparent)" : "transparent",
+                  color: theme ? "var(--ic)" : "inherit",
+                  ["--ic" as string]: theme?.color,
+                }}
+              >
+                <Icon className="h-3.5 w-3.5" />
+              </span>
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
