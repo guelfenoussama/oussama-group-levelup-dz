@@ -172,7 +172,6 @@ function RootComponent() {
               <Footer />
             </div>
             <Toaster richColors position="top-center" />
-            <SignupPrompt />
             <FeedbackModal />
           </PostHogProvider>
         </I18nProvider>
