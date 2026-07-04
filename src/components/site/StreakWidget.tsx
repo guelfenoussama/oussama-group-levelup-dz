@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Flame, Sparkles, Pencil, Check, BookOpen, Trophy } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Flame, Sparkles, Pencil, Check, BookOpen, Trophy, ArrowRight } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import {
   bumpStreak,
@@ -147,6 +148,15 @@ export function StreakWidget() {
               </p>
             </div>
           </div>
+        </div>
+        <div className="relative mt-5 flex justify-end">
+          <Link
+            to="/journey"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-primary/60 hover:bg-primary/15"
+          >
+            Open my learning journey
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </section>
