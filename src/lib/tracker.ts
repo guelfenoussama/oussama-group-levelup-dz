@@ -224,7 +224,6 @@ export function journeyStats() {
     coursesCompleted: completed,
     coursesStarted: started,
     completionPct,
-    xp: j.xp,
     ...levelInfo(j.xp),
   };
 }
