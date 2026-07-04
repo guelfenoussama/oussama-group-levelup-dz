@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/site/ThemeToggle";
 const links = [
   { to: "/", key: "nav.home" },
   { to: "/directory", key: "nav.directory" },
+  { to: "/journey", key: "nav.journey" },
   { to: "/about", key: "nav.about" },
   { to: "/admin", key: "nav.admin" },
 ] as const;

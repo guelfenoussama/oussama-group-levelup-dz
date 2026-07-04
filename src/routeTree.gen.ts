@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as DirectoryRouteImport } from './routes/directory'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -16,6 +17,11 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
+const JourneyRoute = JourneyRouteImport.update({
+  id: '/journey',
+  path: '/journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DirectoryRoute = DirectoryRouteImport.update({
   id: '/directory',
   path: '/directory',
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/directory': typeof DirectoryRoute
+  '/journey': typeof JourneyRoute
   '/admin': typeof AuthenticatedAdminRoute
 }
 export interface FileRoutesByTo {
@@ -58,6 +65,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/directory': typeof DirectoryRoute
+  '/journey': typeof JourneyRoute
   '/admin': typeof AuthenticatedAdminRoute
 }
 export interface FileRoutesById {
@@ -67,13 +75,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/directory': typeof DirectoryRoute
+  '/journey': typeof JourneyRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/auth' | '/directory' | '/admin'
+  fullPaths: '/' | '/about' | '/auth' | '/directory' | '/journey' | '/admin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/auth' | '/directory' | '/admin'
+  to: '/' | '/about' | '/auth' | '/directory' | '/journey' | '/admin'
   id:
     | '__root__'
     | '/'
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/directory'
+    | '/journey'
     | '/_authenticated/admin'
   fileRoutesById: FileRoutesById
 }
@@ -90,10 +100,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   DirectoryRoute: typeof DirectoryRoute
+  JourneyRoute: typeof JourneyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/journey': {
+      id: '/journey'
+      path: '/journey'
+      fullPath: '/journey'
+      preLoaderRoute: typeof JourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/directory': {
       id: '/directory'
       path: '/directory'
@@ -156,6 +174,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   DirectoryRoute: DirectoryRoute,
+  JourneyRoute: JourneyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
