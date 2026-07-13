@@ -96,14 +96,6 @@ Future versions may include:
 
 ---
 
-## 👨‍💻 Developer
-
-**Oussama**
-
-Built through self-learning and continuous practice.
-
----
-
 > **School gives students grades. Skills build careers. LevelUp DZ helps Algerian students discover the skills that school often doesn't teach.**
 *Made with 💻, 📊 (Custom CSV), and 🎯 in Algeria for Algerian students.*
 
